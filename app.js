@@ -8,11 +8,16 @@ getMember()
 
 // It's an asynchroneous function that runs without name and that contains await too
 (async() => {
-    // Await & Asyn require variables
-    // Await is looking for the result returned by resolve, here [1, 2, 3]
-    let member = await getMember()
-    let articles = await getArticles(member)
-    console.log(articles)
+        // How to manage errors withy async
+        try {
+            // Await & Asyn require variables
+            // Await is looking for the result returned by resolve, here [1, 2, 3]
+            let member = await getMember()
+            let articles = await getArticles(member)
+            console.log(articles)
+        } catch (err) {
+            console.log(err.message)
+        }
 })()
 
 function getMember() {
@@ -34,5 +39,5 @@ function getArticles(member) {
     })
 }
 
-console.log('End')
+
 
