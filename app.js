@@ -1,15 +1,21 @@
 console.log('Start')
 
-// (After 'end') We want to return the member first and then the array
+// This variable should be taken as a promise
+let p = new Promise((resolve, reject)=> {
 
-// USING A FIRST CALLBACK on getMember() to display 'Member 1' 
-getMember((member) => {
-    console.log(member)
-    // USING A SECOND CALLBACK on getArticles() to display the array
-    // We set articles as a callback parameter 
-    getArticles(member, (articles)=>{
-        console.log(articles)
-    })
+    setTimeout(()=>{
+        resolve('All good')
+        //reject(new Error('Error during ...'))
+    }, 1500)
+})
+
+// We need to create resolve() and reject() with .then()
+// First resolve
+p.then((message)=>{
+    console.log(message)
+    // Then reject
+}).catch((err)=>{
+    console.log(err.message)
 })
 
 console.log('End')
@@ -32,3 +38,5 @@ function getArticles(member, next) {
         next([1, 2, 3])
     }, 1500)
 }
+
+// Lees promesses évite le systeme d'embrication pour avoir plutot un systeme de suite
