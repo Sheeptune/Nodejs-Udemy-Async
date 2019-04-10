@@ -1,4 +1,4 @@
-console.log('Start')
+console.log('Start');
 
 /*
 getMember()
@@ -6,17 +6,14 @@ getMember()
     .then(articles => console.log(articles))
 }) */
 
-// Call getMembers(), wait for resolve to return a result, then put it back into the member
-// As if our code was synchroneous, simultaneous (but in reality it is not)
-async function viewArticles(){
+// It's an asynchroneous function that runs without name and that contains await too
+(async() => {
     // Await & Asyn require variables
     // Await is looking for the result returned by resolve, here [1, 2, 3]
     let member = await getMember()
     let articles = await getArticles(member)
     console.log(articles)
-}
-
-viewArticles()
+})()
 
 function getMember() {
     return new Promise((resolve, reject) => {
@@ -37,5 +34,5 @@ function getArticles(member) {
     })
 }
 
-
 console.log('End')
+
