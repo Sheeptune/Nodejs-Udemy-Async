@@ -1,7 +1,7 @@
 console.log('Start')
 
-// This variable should be taken as a promise
-let p = new Promise((resolve, reject)=> {
+// Creation of a promise
+new Promise((resolve, reject)=> {
 
     setTimeout(()=>{
         resolve('All good')
@@ -10,13 +10,9 @@ let p = new Promise((resolve, reject)=> {
 })
 
 // We need to create resolve() and reject() with .then()
-// First resolve
-p.then((message)=>{
-    console.log(message)
-    // Then reject
-}).catch((err)=>{
-    console.log(err.message)
-})
+// First resolve, then reject
+.then(message => {console.log(message)})
+.catch(err => {console.log(err.message)})
 
 console.log('End')
 
